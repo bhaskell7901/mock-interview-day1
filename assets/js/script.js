@@ -43,3 +43,64 @@ function pairCount(arr){
     }    
     return 0;
 }
+
+function deDupe(arr){
+    obj = {};
+    arr.forEach((element) => { 
+        obj[element] = true;
+    });
+    return Object.keys(obj);
+}
+
+function reverseString(str){
+    var newStr = [];
+    str = str.split("");
+
+    for( var i = str.length - 1 ; i >= 0; --i ){
+        newStr.push(str[i]);
+    }
+    return newStr.join("");
+}
+
+function commonLetters(str1, str2){
+    var obj = {};
+    
+    for( var i = 0; i < str1.length; ++i ){
+        if( str2.includes(str1[i])) {
+            obj[str1[i]] = 0;
+        }     
+    }
+    // str1 = str1.split("");
+    // // str2 = str2.split("");
+    // str1.forEach((elm, str2) => {
+    //     if( str2.indexOf(elm) !== -1 ){
+    //         obj[elm] = str2[str2.indexOf(elm)];
+    //     };
+    return Object.keys(obj);
+    // };
+
+}
+
+function getConsecutiveCount(str){
+    var arr = [];
+    var count = 1;
+
+    str = str.split("");
+
+
+    for( var i = 1; i < str.length; ++i ){
+        if( str[i - 1] === str[i] ){
+            ++count;
+        } else {
+            arr.push([str[i-1], count ]);
+            count = 1;
+        }
+    }
+    
+    var rtnStr = "";
+    for( var i = 0; i < arr.length; ++i ){
+        rtnStr = rtnStr + arr[i][0] + arr[i][1];
+    }
+    return rtnStr;
+
+}
